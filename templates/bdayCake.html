@@ -1,0 +1,43 @@
+<!-- Example of an individual product page -->
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کیک تولد ویژه</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/vazirmatn.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'vazirmatn', sans-serif;
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center text-gray-800">کیک تولد ویژه</h1>
+        
+        <!-- Product Image and Gallery -->
+        <div class="flex flex-col items-center mt-6">
+            <img src="bdCake.webp" class="w-96 h-96 object-cover rounded-lg shadow-lg">
+            <div class="flex gap-4 mt-4">
+                <img src="bdCake1.webp" class="w-32 h-32 object-cover rounded-md shadow-md">
+                <img src="bdCake2.webp" class="w-32 h-32 object-cover rounded-md shadow-md">
+            </div>
+        </div>
+        
+        <!-- Description -->
+        <p class="mt-6 text-gray-700 text-lg text-center">
+            این کیک تولد ویژه با مواد اولیه تازه و درجه یک تهیه شده است. مناسب برای جشن‌های شما، با طعم فوق‌العاده و طراحی زیبا.
+        </p>
+        
+        <!-- Order Button -->
+        <div class="flex justify-center mt-6">
+            <button class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300">
+                🛒 ثبت سفارش
+            </button>
+        </div>
+    </div>
+</body>
+</html>

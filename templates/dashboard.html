@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50">
+    <!-- Top Navigation Bar -->
+    <header class="bg-blue-600 text-white py-4 px-6">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="{% static 'photos/logo1.png' %}" alt="لوگوی سایت" class="h-10 w-10 ml-3">
+                <h1 class="text-2xl font-bold">داشبورد</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="{% url 'dashboard' %}" class="hover:underline">داشبورد</a></li>
+                    <li><a href="{% url 'logout' %}" class="hover:underline">خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-8 px-4">
+        <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">خوش آمدید، {{ user.username }}</h2>
+
+            {% if user.is_bakery %}
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold mb-2">قنادی: {{ bakery.name }}</h3>
+                    <p class="text-gray-600">تلفن: {{ bakery.phone }}</p>
+                    <p class="text-gray-600">آدرس: {{ bakery.address }}</p>
+                </div>
+                <h3 class="text-lg font-bold mb-2">سفارش‌های دریافتی</h3>
+                {% if orders %}
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-200">
+                            <thead class="bg-blue-100">
+                                <tr>
+                                    <th class="py-2 px-4 border">شناسه سفارش</th>
+                                    <th class="py-2 px-4 border">مشتری</th>
+                                    <th class="py-2 px-4 border">وضعیت</th>
+                                    <th class="py-2 px-4 border">تاریخ ثبت</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr class="text-center border-b hover:bg-blue-50">
+                                    <td class="py-2 px-4 border">{{ order.id }}</td>
+                                    <td class="py-2 px-4 border">{{ order.customer.username }}</td>
+                                    <td class="py-2 px-4 border">{{ order.get_status_display }}</td>
+                                    <td class="py-2 px-4 border">{{ order.created_at|date:"Y-m-d H:i" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-gray-500">هنوز سفارشی دریافت نشده است.</p>
+                {% endif %}
+
+            {% elif user.is_customer %}
+                <h3 class="text-lg font-bold mb-2">سفارش‌های من</h3>
+                {% if orders %}
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-200">
+                            <thead class="bg-blue-100">
+                                <tr>
+                                    <th class="py-2 px-4 border">شناسه سفارش</th>
+                                    <th class="py-2 px-4 border">قنادی</th>
+                                    <th class="py-2 px-4 border">وضعیت</th>
+                                    <th class="py-2 px-4 border">تاریخ ثبت</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr class="text-center border-b hover:bg-blue-50">
+                                    <td class="py-2 px-4 border">{{ order.id }}</td>
+                                    <td class="py-2 px-4 border">{{ order.bakery.name }}</td>
+                                    <td class="py-2 px-4 border">{{ order.get_status_display }}</td>
+                                    <td class="py-2 px-4 border">{{ order.created_at|date:"Y-m-d H:i" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-gray-500">شما تاکنون سفارشی ثبت نکرده‌اید.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

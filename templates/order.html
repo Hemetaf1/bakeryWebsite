@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت سفارش</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            direction: rtl;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        }
+        .container {
+            max-width: 450px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 2px solid #ff758c;
+            border-radius: 8px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-pink-600">🛍 ثبت سفارش</h1>
+        <p class="text-gray-700 mt-2">لطفاً آدرس تحویل را وارد کنید</p>
+        
+        <form onsubmit="submitOrder(event)">
+            <input type="text" id="address" class="border rounded-lg px-4 py-3 mt-4 focus:ring focus:ring-pink-300" placeholder="📍 آدرس خود را وارد کنید" required>
+            <button type="submit" class="bg-red-500 text-white px-6 py-3 mt-4 rounded-lg hover:bg-red-600 transition-all duration-300 shadow-md">
+                💳 پرداخت و تکمیل سفارش
+            </button>
+        </form>
+        
+        <p id="confirmationMessage" class="hidden text-green-700 mt-4 font-bold">✅ سفارش شما با موفقیت ثبت شد!</p>
+    </div>
+
+    <script>
+        function submitOrder(event) {
+            event.preventDefault();
+            let address = document.getElementById("address").value;
+            if (address.trim() !== "") {
+                document.getElementById("confirmationMessage").classList.remove("hidden");
+            }
+        }
+    </script>
+</body>
+</html>

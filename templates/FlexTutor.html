@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiore Bakery</title>
+    <style>
+        /* @font-face برای فونت فارسی */
+        @font-face {
+            font-family: 'vazirmatn';
+            src: url('https://github.com/rastikerdar/vazirmatn/blob/master/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+        }
+
+        body {
+            font-family: 'vazirmatn', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* استایل کلی منو */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #F9EAE1;
+            padding: 10px 20px;
+            align-items: center;
+            border: 1px solid #ddd;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* منوی کشویی */
+        .navbar .submenu {
+            display: none;
+            background-color: #F9EAE1;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            border-top: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+
+        .navbar .menu-item:hover .submenu {
+            display: block;
+        }
+
+        /* استایل منو همبرگری */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+        }
+
+        /* Media Query برای صفحه‌های کوچک */
+        @media (max-width: 768px) {
+            .navbar .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: right;
+            }
+
+            .navbar .hamburger {
+                display: flex;
+            }
+
+            .navbar .menu.active {
+                display: flex;
+            }
+
+            .submenu {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                text-align: right;
+            }
+
+            .navbar .menu-item {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+                border-top: 1px solid #ddd;
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- منو اصلی -->
+    <header>
+        <div class="navbar">
+            <!-- لوگو -->
+            <div class="logo">
+                <img src="logo1.png" alt="Fiore Bakery">
+            </div>
+
+            <!-- همبرگر -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <!-- منو -->
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="#">محصولات</a>
+                    <div class="submenu">
+                        <a href="#">نان</a>
+                        <a href="#">شیرینی</a>
+                        <a href="#">شیرینی تر</a>
+                        <a href="#">شیرینی خشک</a>
+                        <a href="#">شکلات</a>
+                        <a href="#">کیک</a>
+                        <a href="#">دسر</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a href="#">فروشندگان</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوا -->
+    <h1>کیک فروشی فیوره</h1>
+
+    <div class="container">
+        <div class="cake-container">
+            <img src="cake1.jpg" style="width: 200px; height: 200px;">
+            <p>این یک کیک باربی برای شماست!</p>
+        </div>
+        <div class="cake-container">
+            <img src="cake1.jpg" style="width: 200px; height: 200px;">
+            <p>این یک کیک باربی برای شماست!</p>
+        </div>
+        <div class="cake-container">
+            <img src="cake1.jpg" style="width: 200px; height: 200px;">
+            <p>این یک کیک باربی برای شماست!</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar .menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

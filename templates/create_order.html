@@ -1,0 +1,13 @@
+<h2>ثبت سفارش جدید</h2>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.bakery.label }}: 
+        {{ form.bakery }}
+    </div>
+    <div>
+        {{ form.description.label }}: 
+        {{ form.description }}
+    </div>
+    <button type="submit">ثبت سفارش</button>
+</form>
